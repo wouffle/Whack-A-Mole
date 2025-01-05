@@ -105,6 +105,30 @@ function endGame() {
   }
 }
 
+function endGame() {
+  clearInterval(timer);
+  gameContainer.style.display = 'none';
+  endScreen.style.display = 'flex';
+  gameMusic.pause();
+  
+  // Set the final score
+  document.getElementById('final-score').textContent = score;
+
+  if (score > 28) {
+    resultAnimation.innerHTML = '<img src="https://i.pinimg.com/736x/f4/41/6d/f4416d74306c82642066d1c9253db018.jpg" alt="Amazed">';
+    resultMessage.textContent = 'You are amazing! Always knew you were the coolest :)';
+    scoreHigh.play();
+  } else if (score >= 15) {
+    resultAnimation.innerHTML = '<img src="https://i.pinimg.com/236x/ff/75/8f/ff758fb5fb05c1cae21036ffc76d8a2f.jpg" alt="Thumbs Up">';
+    resultMessage.textContent = 'Good job! You are so cool :)';
+    scoreMedium.play();
+  } else {
+    resultAnimation.innerHTML = '<img src="https://i.pinimg.com/236x/a3/2b/f0/a32bf0a268dfea855c14efb49cb5f498.jpg" alt="Try Again">';
+    resultMessage.textContent = "Let's try harder next time! We believe in you :)";
+    scoreLow.play();
+  }
+}
+
 startButton.addEventListener('click', () => {
   startMusic.play();
   startGame();
